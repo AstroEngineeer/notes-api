@@ -21,9 +21,18 @@ func main() {
 
 	router := gin.Default()
 
-	authGroup := router.Group("/auth")
+	authGroup := router.Group("/api/auth")
 	authGroup.POST("/signup", api.Signup)
 	authGroup.POST("/login", api.Login)
+
+	// noteGroup := router.Group("/api")
+	// noteGroup.GET("/notes", api.ListNotes)
+	// noteGroup.GET("/notes/:id", api.GetNote)
+	// noteGroup.POST("/notes", api.CreateNote)
+	// noteGroup.PUT("/notes/:id", api.UpdateNote)
+	// noteGroup.DELETE("/notes/:id", api.DeleteNote)
+	// noteGroup.POST("/notes/:id/share", api.ShareNote)
+	// noteGroup.GET("/notes/search", api.SeachNotes)
 
 	if err := router.Run(":8080"); err != nil {
 		panic(err)

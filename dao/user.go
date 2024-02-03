@@ -17,12 +17,10 @@ func InsertUser(user models.User) (id int64, err error) {
 }
 
 func GetUser(username string) (user models.User, err error) {
-	row := db.QueryRow("SELECT id, username, password FROM users WHERE username=$1", username)
-	if row.Err() != nil {
-		return user, err
-	}
-
-	if err = row.Scan(&user.ID, &user.Username, &user.Password); err != nil {
+	if err := db.QueryRow(
+		"SELECT id, username, password FROM users WHERE username=$1",
+		username,
+	).Scan(&user.ID, &user.Username, &user.Password); err != nil {
 		return user, err
 	}
 
