@@ -1,4 +1,4 @@
-# notes-api
+# Notes API Server
 Speer Backened assessment
 Project Overview
 
